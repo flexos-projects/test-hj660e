@@ -1,99 +1,53 @@
 ---
-id: "007-technical"
-title: "Technical Architecture"
 type: doc
 subtype: core
-status: draft
-sequence: 7
-tags: [technical, architecture, stack, deployment]
+title: Technical Architecture & SEO Implementation
 ---
 
-# Technical Architecture
+### 1. Core Stack
 
-> How the product is built, deployed, and maintained. The engineer's reference document.
+*   **Framework:** **Astro**. Chosen for its exceptional performance through a zero-JavaScript-by-default, static-first architecture. Its content-centric features (MD/MDX collections) are a perfect fit for a documentation-heavy site.
+*   **Deployment:** **Vercel**. Provides a seamless Git-based workflow, global CDN for fast delivery, and serverless functions for backend tasks like form handling.
+*   **Content Management:** **Git-based with Markdown**. Content will live directly in the Git repository as Markdown files. This workflow is ideal for ISC's technical team. For future content contributors, a Git-based CMS like **Decap CMS** can be layered on top to provide a friendlier editing UI.
 
-## Tech Stack
+### 2. Performance Targets
 
-| Layer | Technology | Why |
-|-------|-----------|-----|
-| Framework | Nuxt 4 | Full-stack Vue, SSR, file-based routing |
-| Database | Firestore | Real-time, serverless, scales automatically |
-| Auth | Firebase Auth | Email/password, social login, session management |
-| Hosting | Vercel | Edge deployment, preview deploys, serverless functions |
-| Storage | Vercel Blob | File uploads, images, assets |
-| Styling | UnoCSS / Tailwind | Utility-first, design token integration |
+Performance is a reflection of technical excellence. The site must be blazingly fast.
+*   **Core Web Vitals:** All metrics must score 'Good' in Google Search Console.
+*   **Lighthouse Score:** Target 98+ for Performance, Accessibility, Best Practices, and SEO.
+*   **Time to Interactive (TTI):** Under 2 seconds on a standard mobile connection.
+*   **Image Optimization:** The Astro `<Image />` component will be used universally to automatically generate optimized, responsive `srcset` images in modern formats (WebP/AVIF). All images will be lazy-loaded by default.
 
-## Architecture Overview
+### 3. SEO Technical Requirements
 
-Describe the high-level architecture — client/server split, data flow, caching strategy.
+*   **Sitemaps:** A `sitemap.xml` file will be auto-generated at build time, including all static pages, product pages, and resource articles.
+*   **Structured Data:** JSON-LD schema will be implemented across the site to provide rich context to search engines.
+    *   `Organization`: On all pages, detailing ISC's non-profit status.
+    *   `SoftwareApplication`: On Product pages for BIND and Kea.
+    *   `Article` / `TechArticle`: On all Knowledge Hub and Documentation pages.
+    *   `Person`: On the "Our Experts" pages.
+*   **Meta Tags & Open Graph:** The `astro-seo` component or a similar utility will be used to manage canonical URLs, title tags, meta descriptions, and Open Graph/Twitter Card tags for rich social sharing.
+*   **Robots.txt:** A `robots.txt` file will be configured to allow crawling of all public assets and point to the sitemap.
 
-### Client
+### 4. Form Handling
 
-- Nuxt 4 SPA with SSR for public pages
-- Vue 3 Composition API throughout
-- State management via composables (not Pinia unless complex)
-- File-based routing with middleware for auth gates
+*   **Implementation:** All forms (Contact, Request a Quote) will submit to a Vercel Serverless Function.
+*   **Spam Prevention:** A combination of a honeypot field (hidden from users, visible to bots) and Google reCAPTCHA v3 (invisible) will be used to prevent spam.
+*   **Data Routing:** The serverless function will validate the data and then forward it to the appropriate ISC internal system (e.g., a sales CRM or ticketing system) via a secure API call. No sensitive data will be stored on the web server.
 
-### Server
+### 5. Analytics & Tracking
 
-- Nuxt server routes (server/api/)
-- Firebase Admin SDK for privileged operations
-- Server-side rendering for SEO-critical pages
-- Edge functions for API routes
+*   **Primary Analytics:** We will use a privacy-focused analytics provider like **Plausible** or **Fathom**. This respects user privacy—a value aligned with ISC's open-source ethos—while providing the necessary traffic insights.
+*   **Performance Monitoring:** **Vercel Analytics** will be enabled to monitor Core Web Vitals and real-user performance data.
+*   **Event Tracking:** Custom events will be tracked for key conversions, such as "request_quote_submit" and "download_software_click", to measure the site's effectiveness against its goals.
 
-### Data Flow
+### 6. Search
 
-```
-Client → Nuxt Server Routes → Firestore
-         ↕                     ↕
-      Firebase Auth         Cloud Functions (if needed)
-```
+The Resource Library search is mission-critical.
+*   **Service:** We will integrate **Algolia**. Its speed, typo-tolerance, and advanced filtering capabilities provide the "world-class" experience required for the technical audience.
+*   **Implementation:** At build time, all documentation and knowledge base content will be indexed in Algolia. The front end will use the Algolia client-side library to provide an instantaneous search experience.
 
-## API Routes
+### 7. Third-Party Integrations
 
-List every API endpoint the product needs:
-
-| Method | Path | Purpose | Auth |
-|--------|------|---------|------|
-| POST | /api/auth/login | Authenticate user | No |
-| GET | /api/[resource] | List resources | Yes |
-| POST | /api/[resource] | Create resource | Yes |
-| (continue...) | | | |
-
-## Authentication
-
-- **Method:** Firebase Auth (email/password + Google OAuth)
-- **Session:** HTTP-only cookie with Firebase session token
-- **Middleware:** `auth.ts` middleware checks session on protected routes
-- **Token refresh:** Automatic via Firebase SDK
-
-## Environment Variables
-
-| Variable | Purpose | Required |
-|----------|---------|----------|
-| `FIREBASE_PROJECT_ID` | Firebase project | Yes |
-| `FIREBASE_CLIENT_EMAIL` | Service account | Yes |
-| `FIREBASE_PRIVATE_KEY` | Service account | Yes |
-| (continue...) | | |
-
-## Deployment
-
-- **Production:** Vercel, auto-deploy from `main` branch
-- **Preview:** Vercel preview deploys on every PR
-- **Database:** Firestore production instance
-- **CI/CD:** GitHub Actions for linting, type-checking, tests
-
-## Performance Targets
-
-- **First Contentful Paint:** < 1.5s
-- **Time to Interactive:** < 3s
-- **Lighthouse Score:** > 90 (performance, accessibility)
-- **API Response Time:** < 200ms (p95)
-
-## Security Considerations
-
-- All API routes validate input (Zod schemas)
-- Firestore security rules enforce per-document access
-- CORS configured for production domain only
-- Rate limiting on auth endpoints
-- No secrets in client bundle
+*   **Mailing Lists:** The "Community" section will link directly to ISC's existing Mailman archives and subscription pages.
+*   **Code Highlighting:** A library like **Shiki** or **Prism** will be used within Astro for fast, accurate, server-side syntax highlighting of code blocks.

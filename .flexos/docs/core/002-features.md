@@ -1,59 +1,38 @@
 ---
-id: "002-features"
-title: "Feature Inventory"
 type: doc
 subtype: core
-status: draft
-sequence: 2
-tags: [features, mvp, scope]
+title: Feature Inventory
 ---
 
-# Feature Inventory
+This feature list is ruthlessly prioritized to align with the core project goal: creating an authoritative digital hub for both the community and enterprise audiences.
 
-> The complete list of what this product can do, organized by priority. This is the single source of truth for product scope.
+### P1: Launch Critical (Must-Haves for Go-Live)
 
-## Priority Framework
+| Feature                             | Description                                                                                                                                                                                            | Rationale                                                                                                               |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| **Dual-Path Homepage**              | A clear, prominent choice on the homepage hero section: "For the Community" (Open Source) and "For the Enterprise" (Professional Services).                                                               | The single most important feature for addressing the split-audience problem. Immediately segments users into correct funnels. |
+| **Product Showcase Pages**          | Dedicated, modern pages for BIND 9 and Kea. Includes a clear value proposition, feature overview, and direct links to downloads and documentation.                                                        | The products are the core of ISC's offering. They must be presented professionally to build trust with both audiences.     |
+| **World-Class Resource Library**    | A completely overhauled documentation and resources section. The central feature is a powerful, fast, and version-aware search engine (e.g., Algolia).                                                  | This is the lifeblood for the community audience. A world-class experience here is non-negotiable for maintaining trust. |
+| **Enterprise Services Section**     | A polished, B2B-focused set of pages for Support, Training, and Consulting. Content should focus on benefits, reliability, and expertise.                                                                 | This is the primary revenue-generating section of the site. It must be professional, persuasive, and clear.             |
+| **High-Fidelity Quote Request Form**| A multi-step, user-friendly form for enterprise leads. Collects enough information to be useful for the sales team without creating friction.                                                             | The primary conversion point for the enterprise audience. Must be seamless and instill confidence.                     |
+| **"Our Impact" Showcase**           | A visually compelling page or homepage section using a timeline, key statistics, and maps to tell the story of ISC's global impact.                                                                      | Addresses the "Impact Storytelling" gap. Visually communicates ISC's immense scale and importance.                     |
+| **"Our Experts" Team Page**         | A page featuring professional photos, detailed bios, and credentials of the core ISC team. Humanizes the organization and showcases the expertise on offer.                                               | Builds trust for enterprise buyers who are investing in access to these specific experts.                               |
+| **Modern, Responsive Design**       | The entire site must be built with a mobile-first approach, ensuring a flawless experience on all devices from phones to large monitors.                                                                | Standard requirement for any modern website. Essential for usability and SEO.                                         |
+| **Compelling "About Us" Page**      | Tells the "Unsung Architects" story effectively, highlighting the non-profit mission, history, and commitment to an open internet.                                                                       | Builds the foundational narrative and trust that underpins the entire brand.                                          |
 
-Features are classified into three tiers:
+### P2: Fast Follow (Launch within 1-3 months)
 
-- **P0 (Must Have):** The product doesn't work without these. Ship in MVP.
-- **P1 (Should Have):** Important for a good experience. Ship in v1.1.
-- **P2 (Nice to Have):** Delightful but not essential. Ship when capacity allows.
+| Feature                        | Description                                                                                                                         | Rationale                                                                                                           |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| **ISC Knowledge Hub (Blog)**   | A content platform for expert articles, company announcements, and technical deep dives.                                              | Establishes thought leadership, drives long-tail SEO traffic, and provides a platform for ongoing community engagement. |
+| **Case Studies & Testimonials**| A dedicated section to showcase enterprise success stories with client logos and detailed testimonials.                               | Provides crucial social proof for the enterprise audience, validating the investment in ISC's services.             |
+| **Interactive History Timeline** | An enhanced, interactive version of the "Our Impact" timeline, allowing users to explore key milestones in ISC and internet history. | A "wow" feature that deepens engagement with the brand story and provides a valuable historical resource.             |
+| **Advanced Search Analytics**  | Integration of analytics to track what users are searching for in the Resource Library, what they find, and where they fail.          | Provides actionable data to continuously improve the site's most critical resource for the community.                 |
 
-## P0 Features (MVP)
+### P3: Future Roadmap (6-12 months and beyond)
 
-List every feature that must exist for the product to be viable. For each:
-
-- **Name:** Short, descriptive name
-- **Description:** What it does in 2-3 sentences
-- **User Stories:** "As a [user], I want to [action] so that [benefit]"
-- **Acceptance Criteria:** How do we know it's done?
-- **Dependencies:** Other features this requires
-- **Pages:** Which pages surface this feature
-
-## P1 Features
-
-Features that make the product good, not just functional. Same format as P0.
-
-## P2 Features
-
-Features that delight. Same format as P0.
-
-## Feature-to-Page Matrix
-
-A grid showing which features appear on which pages. This reveals gaps — pages with no features, features with no pages.
-
-| Feature | Landing | Dashboard | Settings | Profile |
-|---------|---------|-----------|----------|---------|
-| (list features vs pages) | | | | |
-
-## MVP Scope
-
-Summarize the exact scope of the first release. What's in, what's out, and why. Include estimated complexity (S/M/L) for each P0 feature.
-
-## Feature Dependencies
-
-Which features depend on others? Draw the dependency graph as a list:
-
-- Feature A requires Feature B (because...)
-- Feature C requires Feature A and Feature D
+| Feature                         | Description                                                                                                                                   | Rationale                                                                                                   |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| **Training Portal**             | A dedicated area for listing upcoming training courses, displaying syllabi, and potentially handling registration and payment.                  | Expands the training service from a simple page into a more robust business tool, streamlining operations.  |
+| **Events & Webinars Section**   | A calendar of industry events where ISC is speaking, and a platform for hosting and archiving webinars.                                         | Further solidifies thought leadership and provides another channel for community and enterprise engagement. |
+| **Documentation Personalization** | Allowing users to create a personalized "bookshelf" of their most-used documentation pages for quick access.                                  | A power-user feature that would deliver immense value to the core community audience and foster loyalty.    |

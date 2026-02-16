@@ -1,60 +1,53 @@
 ---
-id: "001-vision"
-title: "Vision & Strategy"
 type: doc
 subtype: core
-status: draft
-sequence: 1
-tags: [vision, strategy, personas]
+title: 'Project Vision: The Digital Headquarters for Internet Infrastructure'
 ---
 
-# Vision & Strategy
+### 1. The Transformation
 
-> The north star document. Defines what this product is, who it's for, and why it matters. Everything else flows from here.
+This project will transform `isc.org` from a functional, dated file repository into the **authoritative digital headquarters for internet infrastructure**. We are moving beyond a simple brochure for software and evolving into a platform that communicates ISC's monumental importance to the world. The current site serves its technical audience but fails to tell its own story. The new site will do both, seamlessly, projecting an image of quiet confidence, modern relevance, and unwavering trust. It will look and feel like the digital home of the people who built, and continue to steward, the internet's core.
 
-## Vision Statement
+### 2. Target Audiences & Their Needs
 
-A clear, aspirational statement about what this product will become. Not a feature list — a future state. What does the world look like when this product succeeds?
+The new design is built around serving two primary, distinct personas:
 
-## Mission
+*   **The Operator (Community Persona):** A senior network engineer at an ISP or a systems administrator at a university. She is highly technical, time-poor, and allergic to marketing fluff. She comes to the site with a specific goal: download the latest version of BIND, find precise documentation for a specific configuration, or check a mailing list archive. Her journey must be frictionless and fast.
 
-The practical version of the vision. What does this product DO, day to day, for its users? One sentence that anyone on the team can repeat.
+*   **The Decision-Maker (Enterprise Persona):** A CTO at a Fortune 500 company or a VP of Infrastructure at a major telecommunications provider. He is responsible for mission-critical systems where downtime is measured in millions of dollars. He comes to the site seeking assurance. He needs to know that ISC is a stable, reliable partner with the world's foremost experts available 24/7. His journey must build confidence and provide a clear, professional path to engagement.
 
-## Problem
+### 3. The First 3-Second Feeling
 
-What pain point does this solve? Be specific — not "people need better tools" but "freelance photographers lose 3 hours per week chasing clients for gallery approvals." Include evidence if available.
+Upon arrival, a visitor should feel an immediate sense of **calm authority and trust**. The design will be clean, structured, and serious. The messaging will be direct and confident. There will be no doubt they have arrived at the definitive source. The feeling is not that of a flashy startup, but of a deeply established, world-class institution.
 
-## Solution
+### 4. Success Metrics That Matter
 
-How does this product solve the problem? The elevator pitch. What's the core mechanism that makes things better?
+We will measure success not by vanity metrics, but by tangible business and community goals:
 
-## Target Users
+*   **Primary Metric:** A significant increase in qualified leads for Enterprise Support, measured by submissions of the "Request a Quote" form.
+*   **Community Metric:** A measurable decrease in support requests related to finding documentation, tracked via search analytics showing higher success rates on the first query.
+*   **Engagement Metric:** Increased time-on-page and lower bounce rates for the "Our Impact" and "About Us" sections, indicating visitors are connecting with the ISC story.
+*   **Trust Metric:** An increase in direct and branded search traffic, showing that ISC is becoming a primary destination rather than just a search result.
 
-### Primary Persona
+### 5. Content Strategy: The ISC Knowledge Hub
 
-Describe the main user in detail — their role, frustrations, goals, technical comfort level, and what "success" looks like for them. Give them a name.
+The new site will be more than a documentation library; it will be a resource. We will establish the **ISC Knowledge Hub**, a central place for expert-written content that educates and informs the entire internet community. This will include:
 
-### Secondary Personas
+*   **Deep Dives:** Articles from ISC engineers explaining the "why" behind protocol changes and software architecture decisions.
+*   **Historical Perspectives:** Telling the story of the internet's growth through the lens of BIND and ISC's involvement.
+*   **Best Practices:** Authoritative guides on securing and optimizing DNS and DHCP infrastructure.
 
-Other user types who benefit from the product. Admins, managers, collaborators, viewers — whoever else interacts with the system.
+This strategy reinforces their thought leadership, provides immense value to the community, and creates a powerful engine for organic search traffic.
 
-## Unique Value Proposition
+### 6. SEO Ambitions
 
-What makes this different from alternatives? Not just "better UI" — what's the structural advantage? Why will users switch from what they're doing now?
+The new ISC website will **own its digital territory**. We will rank #1 for our brand and product names. Beyond that, we will become the top-ranking authoritative resource for strategic, high-intent keywords that our audiences search for, including:
 
-## Success Metrics
+*   `BIND 9 documentation`
+*   `Kea DHCP server`
+*   `enterprise DNS support`
+*   `commercial BIND support`
+*   `internet standards non-profit`
+*   `history of DNS`
 
-How do we know this is working? Define 3-5 measurable outcomes:
-
-- **Activation:** (what does a successful first session look like?)
-- **Engagement:** (what does regular usage look like?)
-- **Retention:** (what keeps users coming back?)
-- **Growth:** (how does the product spread?)
-
-## Non-Goals
-
-Equally important: what is this product NOT? What features, markets, or approaches are explicitly out of scope? This prevents scope creep and keeps the team focused.
-
-## Competitive Landscape
-
-What alternatives exist? Direct competitors, indirect substitutes, and the "do nothing" option. Where does this product fit in the market?
+We are not just building a website; we are building the definitive online resource for the technologies ISC stewards.

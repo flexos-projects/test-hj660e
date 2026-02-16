@@ -1,73 +1,81 @@
 ---
-id: "004-database"
-title: "Database & Data Model"
 type: doc
 subtype: core
-status: draft
-sequence: 4
-tags: [database, schema, collections, data]
+title: Content & Data Models
 ---
 
-# Database & Data Model
+This document defines the structured content models required to power the new ISC website. These models ensure content is consistent, reusable, and optimized for both display and SEO (via JSON-LD). All text fields support Markdown.
 
-> Every piece of data the product stores, how it's structured, and how it relates. This is the foundation for the backend.
+### 1. Product
 
-## Database Choice
+Used for BIND 9 and Kea.
+*   **`name`**: Text (e.g., "BIND 9")
+*   **`slug`**: Text (e.g., "bind")
+*   **`tagline`**: Text (e.g., "The World's Most Trusted DNS Software")
+*   **`logo`**: Image
+*   **`summary`**: Text (for use on homepage cards)
+*   **`body`**: Markdown (full page content)
+*   **`features`**: Repeater
+    *   **`icon`**: Icon selector
+    *   **`feature_title`**: Text
+    *   **`feature_description`**: Text
+*   **`download_link`**: URL
+*   **`documentation_link`**: URL (links to the resource library, pre-filtered)
 
-Which database and why. Default: Firestore (NoSQL, real-time, serverless). Document any reasons to deviate.
+### 2. Service
 
-## Collection Inventory
+Used for Enterprise Support, Training, and Consulting.
+*   **`title`**: Text (e.g., "Enterprise Support")
+*   **`slug`**: Text (e.g., "support")
+*   **`summary`**: Text (for use on the Enterprise gateway page)
+*   **`body`**: Markdown (full page content, including tier descriptions)
+*   **`audience`**: Tag (pre-set to "Enterprise")
+*   **`cta_label`**: Text (e.g., "Request a Support Quote")
+*   **`cta_link`**: URL (links to the contact page with a query parameter)
 
-List every collection/table in the system with a one-line description:
+### 3. Team Member (Expert)
 
-| Collection | Description | Primary Key |
-|-----------|-------------|-------------|
-| `users` | User accounts and profiles | auto-generated |
-| (add collections...) | | |
+Drives the "Our Experts" page.
+*   **`name`**: Text (e.g., "Jane Doe")
+*   **`title`**: Text (e.g., "Principal Software Engineer")
+*   **`photo`**: Image (professional headshot)
+*   **`bio`**: Markdown (detailed biography)
+*   **`social_links`**: Repeater
+    *   **`platform`**: Select (LinkedIn, Twitter, GitHub)
+    *   **`url`**: URL
+*   **`is_active`**: Boolean (to show/hide members)
 
-## Schema Definitions
+### 4. Resource
 
-For each collection, define the full schema:
+The core model for the Knowledge Hub and Documentation.
+*   **`title`**: Text
+*   **`slug`**: Text (auto-generated from title)
+*   **`resource_type`**: Select (Documentation, Knowledge Base Article, Announcement)
+*   **`author`**: Relation (links to a **Team Member**)
+*   **`publish_date`**: Date
+*   **`body`**: Markdown
+*   **`tags`**: Tag list (e.g., "DNS", "Security", "IPv6")
+*   **`related_product`**: Relation (links to a **Product**, e.g., BIND 9 or Kea)
+*   **`product_version`**: Text (e.g., "9.18.1")
 
-### `users`
+### 5. Testimonial
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `id` | string | yes | Auto-generated document ID |
-| `email` | string | yes | User's email address |
-| `displayName` | string | yes | Display name |
-| `createdAt` | timestamp | yes | Account creation time |
-| `updatedAt` | timestamp | yes | Last modification time |
+For enterprise social proof.
+*   **`quote`**: Text (the testimonial itself)
+*   **`author_name`**: Text
+*   **`author_title`**: Text (e.g., "CTO")
+*   **`company_name`**: Text
+*   **`company_logo`**: Image (optional)
+*   **`is_featured`**: Boolean (to highlight on homepage or enterprise gateway)
 
-(Continue for each collection...)
+### 6. Site Globals
 
-## Relationships
+A singleton collection for site-wide settings.
+*   **`site_name`**: Text ("Internet Systems Consortium")
+*   **`site_tagline`**: Text ("The Trusted Foundation of the Internet")
+*   **`contact_email_sales`**: Email
+*   **`contact_email_general`**: Email
+*   **`security_contact_instructions`**: Markdown
+*   **`social_links`**: Repeater (Platform, URL)
 
-How do collections reference each other? Document every foreign key relationship:
-
-- `posts.userId` → references `users.id` (one-to-many: one user has many posts)
-- (continue for all relationships...)
-
-## Access Patterns
-
-What queries does the application need? This determines indexes and security rules:
-
-| Query | Collection | Filters | Sort | Used By |
-|-------|-----------|---------|------|---------|
-| Get user's posts | `posts` | `userId == x` | `createdAt desc` | Dashboard |
-| (add queries...) | | | | |
-
-## Security Rules
-
-Who can read/write what? Define per-collection:
-
-- **users:** Owner can read/write own doc. Others can read displayName only.
-- (continue for each collection...)
-
-## Indexes
-
-Based on access patterns, which composite indexes are needed?
-
-## Data Migration
-
-If this project was imported, document any data migration needs. What data exists in the old system? How does it map to the new schema?
+These models provide the necessary structure to build a dynamic, content-rich site that is easy to manage and scale over time.

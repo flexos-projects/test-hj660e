@@ -1,41 +1,42 @@
 ---
-id: "000-import"
-title: "Project Origin"
 type: doc
 subtype: core
-status: draft
-sequence: 0
-tags: [origin, provenance]
+title: Source Data Summary
 ---
 
-# Project Origin
+### 1. Overview
 
-> Every FlexOS project has an origin story. This document records how the project was created and what source material informed it.
+This document summarizes the verified source data for the Internet Systems Consortium (ISC) website redesign project. The data is derived from a comprehensive research brief. The quality of the information is high, providing a strong strategic foundation. The primary challenge is not a lack of information, but the need to translate deep technical credibility and history into a modern, compelling digital narrative.
 
-## Source
+### 2. Verified Facts (What We Know)
 
-Describe how this project came into existence. Was it imagined from a description? Imported from an existing GitHub repository? Scraped from a live website? Created from a template?
+*   **Identity:** Internet Systems Consortium (ISC), a 501(c)(3) non-profit.
+*   **History:** Founded in 1994, with nearly 30 years of operational history as a foundational internet organization.
+*   **Core Mission:** Develop, maintain, and support critical, open-source internet software. Contribute to internet standards and protocols (e.g., IETF).
+*   **Primary Products:**
+    *   **BIND 9:** The most widely used Domain Name System (DNS) software globally.
+    *   **Kea:** A modern Dynamic Host Configuration Protocol (DHCP) server.
+*   **Business Model:** Revenue is driven by premium, enterprise-grade professional services, including technical support contracts, training, and consulting for their open-source software.
+*   **Audience:** A dual audience of (1) the global open-source technical community (engineers, sysadmins) and (2) enterprise-level decision-makers (CTOs, VPs of Infrastructure) at corporations, ISPs, and government agencies.
+*   **Reputation:** Known for technical excellence, reliability, open-source commitment, and being the authoritative source for their technologies.
+*   **Competitive Position:** Their current website (`isc.org`) is functional but visually dated compared to modern competitors like NLnet Labs and The Internet Society. It does not reflect their immense authority and legacy.
+*   **Core Narrative:** "The Unsung Architects of the Internet." A quiet, trusted steward of foundational internet plumbing.
 
-- **Type:** imagination | github_import | website_scrape | blank | template
-- **Source:** (URL, description, or "from scratch")
-- **Date:** (when the project was created)
+### 3. Key Content Assets (Available)
 
-## Original Input
+*   **Software:** BIND and Kea (downloads, features, release notes).
+*   **Documentation:** Extensive, deep technical documentation for their software. This is a core asset.
+*   **History:** A rich 30-year history that parallels the growth of the commercial internet.
+*   **Team:** A small, world-class team of experts who are leaders in their field.
+*   **Services:** Clearly defined enterprise offerings (support, training, consulting).
+*   **Mission:** Their non-profit status is a powerful differentiator and trust signal.
 
-Capture the raw input that started this project — the brain dump, the GitHub URL, the website, or the template name. This is the seed everything else grew from.
+### 4. Data Gaps & Missing Assets
 
-## What Was Learned
+*   **Quantified Impact Metrics:** While we know their impact is massive, we lack specific, high-impact statistics for the homepage (e.g., "Powering X% of the world's DNS lookups," "Y million active installations"). We will need to work with the ISC team to source or responsibly estimate these.
+*   **High-Quality Visuals:** A complete library of professional headshots for the "Our Experts" page is needed. There is also an absence of high-quality brand photography or abstract graphics to visually represent their work.
+*   **Enterprise Testimonials & Case Studies:** The research identifies enterprise support as a key revenue driver, but we lack a collection of approved quotes, logos, and case studies from major clients to build social proof. Sourcing these will be a priority for the "For the Enterprise" section.
+*   **Pricing Details:** Specifics on support contract tiers and pricing are not available and will need to be provided for the enterprise section.
 
-If this project was imported or scraped, summarize the key insights extracted from the source material. What was the original project trying to be? What worked? What was missing?
-
-## Decisions Made
-
-Record any early decisions about scope, direction, or technology that were made during project creation. Why was this approach chosen over alternatives?
-
-## Provenance Chain
-
-If this project builds on previous work, link to the sources:
-
-- **Parent project:** (if forked or imported from another FlexOS project)
-- **External sources:** (GitHub repos, websites, documents that informed this)
-- **AI models used:** (which models generated the initial content)
+---
+**Conclusion:** The strategic direction is exceptionally clear. The primary work during the project will involve filling the content gaps (specifically metrics, testimonials, and visuals) to bring the new, authoritative vision to life.
