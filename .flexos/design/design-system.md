@@ -1,192 +1,194 @@
 ---
-id: design-system
-title: "Design System"
-description: "Design tokens, visual identity, and guidelines for generating the project's CSS design system"
-type: design
-subtype: manifest
-status: draft
-sequence: 1
-tags: [design, tokens, colors, typography, system]
-relatesTo: [docs/core/006-design.md, assets/manifest.md]
-createdAt: ""
-updatedAt: ""
+type: config
+subtype: design-system
+title: Design System
 ---
 
-<flex_block type="instructions">
-This file defines the project's visual identity and design tokens. It serves two purposes:
+The design system has TWO parts: TOKENS (exact values, non-negotiable) and CREATIVE DIRECTION (guidelines that inspire, not constrain). This system is designed to bring the BMR Homes brand vibe of **Quiet Confidence** to life.
 
-1. For the AI: When generating prototypes, components, or CSS, read this file to understand the project's visual language — colors, typography, spacing, component patterns. Generate a tokens.css and components.css in prototype/shared/ based on what's defined here.
+---
 
-2. For the builder: When implementing the real application, use the CSS custom properties defined here as the single source of truth for all visual decisions.
+# PART 1: TOKENS (The Builder MUST Use These)
 
-The tokens flex_block below contains the actual CSS custom property values. The markdown sections explain the design rationale — why these colors, what the vibe is, how components should feel. The AI should read both.
-</flex_block>
+## Colors
 
-# Design System
+The palette is inspired by architectural materials and natural light, creating a sense of calm, sophistication, and trust. It is grounded and premium.
 
-## Design Vision
-
-This section captures the overall aesthetic direction. The AI uses this to make consistent creative decisions when generating prototypes and UI.
-
-- **Style:** (Modern, Minimal, Bold, Playful, Corporate, etc.)
-- **Vibe:** (2-3 words describing how the product should feel)
-- **Inspiration:** (Reference apps, websites, or brands)
-- **Dark mode:** Both (light default, dark via toggle and OS preference)
-
-## Color Tokens — Light Mode
-
-<flex_block type="tokens">
-{
-  "type": "colors",
-  "mode": "light",
-  "tokens": {
-    "--color-primary": "#8b5cf6",
-    "--color-primary-dark": "#7c3aed",
-    "--color-primary-light": "#a78bfa",
-    "--color-accent": "#06b6d4",
-    "--color-success": "#22c55e",
-    "--color-warning": "#f59e0b",
-    "--color-error": "#ef4444",
-    "--color-bg": "#ffffff",
-    "--color-surface": "#f8fafc",
-    "--color-elevated": "#ffffff",
-    "--color-border": "#e2e8f0",
-    "--color-text-primary": "#0f172a",
-    "--color-text-secondary": "#64748b",
-    "--color-text-tertiary": "#94a3b8"
+```javascript
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        primary: { // Slate Blue: Stable, professional, and grounded.
+          50: '#F0F4F6',
+          100: '#DDE6EA',
+          200: '#BCCDD4',
+          300: '#9BB3BF',
+          400: '#7A9AAD',
+          500: '#4A6572',
+          600: '#3F5661',
+          700: '#354851',
+          800: '#2A3A42',
+          900: '#1E2B33',
+        },
+        surface: { // Bone White/Sand: Warm, textural, and light-filled. The canvas for our content.
+          50: '#F8F6F2',
+          100: '#F1EDE5',
+          200: '#E9E2D7',
+          300: '#E0D8CA',
+          400: '#D0C4B4',
+          500: '#C0B19D',
+          600: '#AE9D88',
+          700: '#90816F',
+          800: '#726556',
+          900: '#544A3D',
+        },
+        accent: { // Muted Terracotta: Warm, organic, and human. For purposeful calls-to-action.
+          50: '#FDF6F3',
+          100: '#FAE9E1',
+          200: '#F2D3C4',
+          300: '#E9BDA7',
+          400: '#E0A789',
+          500: '#B85C38',
+          600: '#A95432',
+          700: '#8F472A',
+          800: '#753A22',
+          900: '#5C2D1A',
+        },
+      }
+    }
   }
 }
-</flex_block>
+```
 
-## Color Tokens — Dark Mode
+**Semantic Colors:**
 
-<flex_block type="tokens">
-{
-  "type": "colors",
-  "mode": "dark",
-  "tokens": {
-    "--color-primary": "#a78bfa",
-    "--color-primary-dark": "#8b5cf6",
-    "--color-primary-light": "#c4b5fd",
-    "--color-accent": "#22d3ee",
-    "--color-success": "#4ade80",
-    "--color-warning": "#fbbf24",
-    "--color-error": "#f87171",
-    "--color-bg": "#0f172a",
-    "--color-surface": "#1e293b",
-    "--color-elevated": "#334155",
-    "--color-border": "#334155",
-    "--color-text-primary": "#f1f5f9",
-    "--color-text-secondary": "#94a3b8",
-    "--color-text-tertiary": "#64748b"
+*   **Success:** `#28A745` (A clear, standard green)
+*   **Warning:** `#FFC107` (A warm, noticeable amber)
+*   **Error:** `#DC3545` (A strong but not overly vibrant red)
+
+**Reasoning:** The `primary` slate blue provides a professional, trustworthy foundation, like a solid blueprint. The `surface` neutrals create a warm, airy canvas, reminiscent of sunlit, high-end interiors. The `accent` terracotta provides a touch of organic warmth for interactive elements, connecting the digital experience to natural building materials.
+
+## Typography
+
+The typography pairs modern structure with classic craftsmanship, reflecting BMR's building philosophy.
+
+*   **Heading Font:** **Poppins** (from Google Fonts). A geometric sans-serif that feels clean, confident, and architectural. Its precision reflects the quality of BMR's work.
+*   **Body Font:** **Lora** (from Google Fonts). A contemporary serif with calligraphic roots. It adds a touch of warmth, elegance, and storytelling, making project descriptions and process explanations feel more personal and trustworthy.
+
+**Tailwind Font Size Scale:**
+
+```javascript
+// tailwind.config.js
+module.exports = {
+  theme: {
+    fontSize: {
+      'xs': ['0.75rem', { lineHeight: '1rem' }],      // 12px
+      'sm': ['0.875rem', { lineHeight: '1.25rem' }],   // 14px
+      'base': ['1rem', { lineHeight: '1.75rem' }],     // 16px
+      'lg': ['1.125rem', { lineHeight: '1.75rem' }],   // 18px
+      'xl': ['1.25rem', { lineHeight: '1.75rem' }],   // 20px
+      '2xl': ['1.5rem', { lineHeight: '2rem' }],      // 24px
+      '3xl': ['1.875rem', { lineHeight: '2.25rem' }],  // 30px
+      '4xl': ['2.25rem', { lineHeight: '2.5rem' }],   // 36px
+      '5xl': ['3rem', { lineHeight: '1.2' }],         // 48px
+      '6xl': ['3.75rem', { lineHeight: '1.2' }],        // 60px
+    },
   }
 }
-</flex_block>
+```
 
-### Theme Switching
+**Font Weight Usage:**
 
-The prototype supports both light and dark modes via a `data-theme` attribute on `<html>`. Setting `data-theme="dark"` activates dark tokens. If no attribute is set, the OS preference (`prefers-color-scheme: dark`) is used as a fallback. A toggle button in the nav lets users switch manually — the preference is saved to `localStorage`.
+*   `font-light` (300): Can be used for tertiary text like captions or metadata.
+*   `font-normal` (400): The default for all body copy (Lora).
+*   `font-medium` (500): For UI elements like navigation links or button text.
+*   `font-semibold` (600): The default for all headings (Poppins).
+*   `font-bold` (700): For primary, high-impact headlines (`h1`).
 
-### Color Usage
+## Spacing
 
-- **Primary** — CTAs, links, active states, key interactive elements
-- **Accent** — Secondary highlights, badges, supplementary actions
-- **Semantic** (success/warning/error) — Feedback states, alerts, validation
-- **Surface/Elevated** — Card backgrounds, modals, layered UI
-- **Text tiers** — Primary for headings and body, secondary for labels, tertiary for hints
+Generous spacing is key to the premium, uncluttered, "architectural magazine" feel.
 
-## Typography Tokens
+*   **Section Vertical Padding:** Generous. Use `py-24` (96px) or `py-32` (128px) between major content sections.
+*   **Content Max-Width:** `1280px` (`max-w-7xl`). This provides an expansive, cinematic canvas for photography.
+*   **Container Horizontal Padding:** Start with `px-6` on mobile and expand to `sm:px-8` on larger screens.
 
-<flex_block type="tokens">
-{
-  "type": "typography",
-  "tokens": {
-    "--font-heading": "Inter, system-ui, -apple-system, sans-serif",
-    "--font-body": "Inter, system-ui, -apple-system, sans-serif",
-    "--font-mono": "JetBrains Mono, ui-monospace, monospace",
-    "--font-size-xs": "0.75rem",
-    "--font-size-sm": "0.875rem",
-    "--font-size-base": "1rem",
-    "--font-size-lg": "1.125rem",
-    "--font-size-xl": "1.25rem",
-    "--font-size-2xl": "1.5rem",
-    "--font-size-3xl": "2rem",
-    "--font-size-4xl": "2.5rem",
-    "--font-weight-normal": "400",
-    "--font-weight-medium": "500",
-    "--font-weight-semibold": "600",
-    "--font-weight-bold": "700",
-    "--line-height-tight": "1.25",
-    "--line-height-normal": "1.5",
-    "--line-height-relaxed": "1.75"
-  }
-}
-</flex_block>
+## Shapes
 
-## Spacing & Layout Tokens
+Shapes should be clean, precise, and understated.
 
-<flex_block type="tokens">
-{
-  "type": "spacing",
-  "tokens": {
-    "--space-1": "0.25rem",
-    "--space-2": "0.5rem",
-    "--space-3": "0.75rem",
-    "--space-4": "1rem",
-    "--space-6": "1.5rem",
-    "--space-8": "2rem",
-    "--space-12": "3rem",
-    "--space-16": "4rem",
-    "--space-24": "6rem",
-    "--radius-sm": "0.375rem",
-    "--radius-md": "0.5rem",
-    "--radius-lg": "0.75rem",
-    "--radius-xl": "1rem",
-    "--radius-full": "9999px",
-    "--shadow-sm": "0 1px 2px rgba(0,0,0,0.05) (light) / rgba(0,0,0,0.3) (dark)",
-    "--shadow-md": "0 4px 6px rgba(0,0,0,0.07) (light) / rgba(0,0,0,0.4) (dark)",
-    "--shadow-lg": "0 10px 15px rgba(0,0,0,0.1) (light) / rgba(0,0,0,0.5) (dark)",
-    "--content-max-width": "1200px",
-    "--sidebar-width": "240px",
-    "--bottom-nav-height": "56px",
-    "--touch-target-min": "44px"
-  }
-}
-</flex_block>
+*   **Border Radius:** Use sparingly to convey precision.
+    *   `rounded-none`: For large containers and image frames to maintain a sharp, architectural look.
+    *   `rounded-md` (6px): For buttons and input fields to give them a finished, tactile feel.
+    *   `rounded-lg` (8px): For content cards (e.g., project portfolio items) to slightly soften them.
+*   **Shadow Style:** Subtle and realistic. Use shadows to indicate elevation or interactivity, not for decoration.
+    *   `shadow-md`: For static cards to provide subtle depth.
+    *   `shadow-xl`: On hover states to create a clear "lift" effect.
+    *   Avoid hard, dark, or colored shadows.
 
-## Component Guidelines
+---
 
-These are not CSS — they're instructions for the AI when generating prototype components.
+# PART 2: CREATIVE DIRECTION (Inspire the Builder)
 
-### Buttons
-- Primary: filled with `--color-primary`, white text, `--radius-md`
-- Secondary: outlined with `--color-primary`
-- Ghost: text only, no background or border
-- All buttons: minimum `--touch-target-min` height on mobile
+## Visual Personality
+**Sophisticated, Calm, Trustworthy, Premium**
 
-### Cards
-- Background: `--color-surface`, border: `--color-border`
-- Border radius: `--radius-lg`
-- Padding: `--space-4` mobile, `--space-6` desktop
-- Hover: subtle `--shadow-md`
+Every component, layout, and interaction should feel considered and intentional. The site should instill a sense of calm confidence in the visitor, assuring them they are in the hands of experts.
 
-### Navigation
-- Desktop: sidebar at `--sidebar-width`, fixed left
-- Mobile: bottom nav at `--bottom-nav-height`, fixed bottom
-- Active state: `--color-primary` indicator
+## Animation & Motion Language
 
-### Forms
-- Labels above inputs, `--font-size-sm`, `--color-text-secondary`
-- Input height: `--touch-target-min`
-- Focus ring: `--color-primary` with 2px offset
-- Error messages: `--color-error`, `--font-size-sm`, below field
+Motion should be **smooth, subtle, and elegant**, reinforcing the brand's quiet confidence. It should feel like a well-engineered drawer closing softly, not a slamming door.
 
-## Generating CSS
+*   **Page transitions**: A simple, quick cross-fade (`opacity`).
+*   **Scroll animations**: Gentle fade-up and slide-in for new sections and images as they enter the viewport. Staggered animations for lists or galleries can add a touch of editorial flair.
+*   **Hover effects**: A subtle "lift" using a larger shadow (`hover:shadow-xl`) and a gentle scale (`hover:scale-[1.02]`). Links can have a simple color shift to the accent color.
+*   **Micro-interactions**: Form fields should subtly glow with the primary color on focus. Button presses should have a gentle `scale(0.98)` transform.
+*   **Speed**: **Smooth** (300-400ms).
+*   **Easing**: **`ease-in-out`** for an elegant, graceful feel.
 
-When the AI generates `prototype/shared/tokens.css`, it should output:
-- Shared tokens (typography, spacing, radius, layout) in `:root`
-- Light color tokens in `:root, [data-theme="light"]`
-- Dark color tokens in `[data-theme="dark"]`
-- An OS preference fallback in `@media (prefers-color-scheme: dark) { :root:not([data-theme]) { ... } }`
+**CSS/Tailwind Examples:**
+1.  **Card Hover Lift:** `transition duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1`
+2.  **Fade-in on Scroll (requires JS intersection observer):** An element starts with `opacity-0 translate-y-4` and transitions to `opacity-100 translate-y-0` when it becomes visible.
+3.  **CTA Button:** `transition-transform duration-200 ease-in-out active:scale-95`
 
-When it generates `components.css`, it should implement the component guidelines using semantic token names — never raw hex values. Components automatically adapt to light/dark because they reference tokens, not colors directly.
+## Layout Philosophy
+
+The layout is **editorial and spacious**, treating content like a feature in a high-end design magazine.
+
+*   **Whitespace:** Extremely generous. It's the most important tool for creating a premium feel. Use it to frame photography and give text room to breathe.
+*   **Grid Rhythm:** Based on a structured 12-column grid for alignment and order, but feel free to break from it for asymmetrical layouts that create visual interest and guide the eye. Overlap images and text blocks where appropriate.
+*   **Image Treatment:** Photography is the hero. Use full-bleed sections, large-format images, and dynamic grids. Avoid trapping photos in small boxes.
+*   **Section Rhythm:** Alternate between light (`bg-surface-50`) and dark (`bg-primary-900`) sections to create contrast and define distinct narrative moments on a page.
+*   **Mobile Approach:** A simplified single column that maintains the generous spacing and strong typographic hierarchy. The premium feel must not be lost.
+
+## Photography & Image Style
+
+The visual language is built on **aspirational and authentic** project photography.
+
+*   **Style:** Exclusively high-resolution, professional photography of BMR's completed projects. No stock photos. Ever.
+*   **Color Treatment:** Bright, airy, and focused on natural light. Colors should be true-to-life and vibrant.
+*   **Subject Matter:** A mix of wide, environmental shots that show the transformation of a space, and tight, detailed shots that highlight material quality and craftsmanship (e.g., tile work, joinery, fixtures).
+
+## Inspiration References
+
+1.  **Studio McGee (`studiomcgee.com`):** Borrow their editorial storytelling approach. Note how they mix large hero images with smaller detail shots and elegant typography to create compelling project case studies.
+2.  **Olson Kundig (`olsonkundig.com`):** Emulate their bold, confident use of full-screen photography and minimalist UI. Their site feels like an art gallery, positioning them as masters of their craft.
+3.  **Sonos (`sonos.com`):** Learn from their masterful use of whitespace, product photography, and subtle, polished micro-interactions. They sell a premium product with a calm, confident, and clean digital experience.
+
+## Do's and Don'ts
+
+**DO:**
+*   **Do** make professional project photography the hero of every page.
+*   **Do** use generous whitespace as a primary design tool to create a premium feel.
+*   **Do** lean on the typographic pairing (Poppins + Lora) to balance modern precision with storytelling warmth.
+*   **Do** create visual rhythm by alternating between light and dark background sections.
+*   **Do** tell a story of transformation, using before-and-after galleries where possible.
+
+**DON'T:**
+*   **Don't** use any stock photography or generic icons. Authenticity is paramount.
+*   **Don't** clutter layouts. When in doubt, remove an element.
+*   **Don't** use loud, distracting animations or overly bright, saturated colors.
+*   **Don't** use heavy drop shadows, thick borders, or gradients.
+*   **Don't** be afraid of asymmetry in layouts to create a more dynamic, editorial feel.
