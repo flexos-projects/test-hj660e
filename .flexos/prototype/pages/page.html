@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMR Homes | Quiet Confidence in Construction</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Design System Tokens as CSS Custom Properties -->
+    <style>
+        :root {
+            /* Colors: Primary */
+            --color-primary-50: #F0F4F6;
+            --color-primary-100: #DDE6EA;
+            --color-primary-200: #BCCDD4;
+            --color-primary-300: #9BB3BF;
+            --color-primary-400: #7A9AAD;
+            --color-primary-500: #4A6572;
+            --color-primary-600: #3F5661;
+            --color-primary-700: #354851;
+            --color-primary-800: #2A3A42;
+            --color-primary-900: #1E2B33;
+
+            /* Colors: Surface */
+            --color-surface-50: #F8F6F2;
+            --color-surface-100: #F1EDE5;
+            --color-surface-200: #E9E2D7;
+            --color-surface-300: #E0D8CA;
+            --color-surface-400: #D0C4B4;
+            --color-surface-500: #C0B19D;
+            --color-surface-600: #AE9D88;
+            --color-surface-700: #90816F;
+            --color-surface-800: #726556;
+            --color-surface-900: #544A3D;
+
+            /* Colors: Accent */
+            --color-accent-50: #FDF6F3;
+            --color-accent-100: #FAE9E1;
+            --color-accent-200: #F2D3C4;
+            --color-accent-300: #E9BDA7;
+            --color-accent-400: #E0A789;
+            --color-accent-500: #B85C38;
+            --color-accent-600: #A95432;
+            --color-accent-700: #8F472A;
+            --color-accent-800: #753A22;
+            --color-accent-900: #5C2D1A;
+
+            /* Colors: Semantic */
+            --color-success: #28A745;
+            --color-warning: #FFC107;
+            --color-error: #DC3545;
+        }
+        
+        /* Custom Scroll-Reveal Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transition-delay: var(--animation-delay, 0s);
+        }
+        .fade-in-up { transform: translateY(1.5rem); }
+        .fade-in-left { transform: translateX(-1.5rem); }
+        .fade-in-right { transform: translateX(1.5rem); }
+
+        .is-visible {
+            opacity: 1;
+            transform: translateY(0) translateX(0);
+        }
+
+        /* Smooth Accordion Transition */
+        .accordion-content {
+            transition: max-height 0.4s ease-in-out, padding-top 0.4s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
+            padding-top: 0 !important;
+        }
+
+    </style>
+
+    <!-- Custom Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: 'var(--color-primary-50)', 100: 'var(--color-primary-100)', 200: 'var(--color-primary-200)', 300: 'var(--color-primary-300)', 400: 'var(--color-primary-400)', 500: 'var(--color-primary-500)', 600: 'var(--color-primary-600)', 700: 'var(--color-primary-700)', 800: 'var(--color-primary-800)', 900: 'var(--color-primary-900)',
+                        },
+                        surface: {
+                            50: 'var(--color-surface-50)', 100: 'var(--color-surface-100)', 200: 'var(--color-surface-200)', 300: 'var(--color-surface-300)', 400: 'var(--color-surface-400)', 500: 'var(--color-surface-500)', 600: 'var(--color-surface-600)', 700: 'var(--color-surface-700)', 800: 'var(--color-surface-800)', 900: 'var(--color-surface-900)',
+                        },
+                        accent: {
+                            50: 'var(--color-accent-50)', 100: 'var(--color-accent-100)', 200: 'var(--color-accent-200)', 300: 'var(--color-accent-300)', 400: 'var(--color-accent-400)', 500: 'var(--color-accent-500)', 600: 'var(--color-accent-600)', 700: 'var(--color-accent-700)', 800: 'var(--color-accent-800)', 900: 'var(--color-accent-900)',
+                        },
+                        success: 'var(--color-success)',
+                        warning: 'var(--color-warning)',
+                        error: 'var(--color-error)',
+                    },
+                    fontFamily: {
+                        heading: ['Poppins', 'sans-serif'],
+                        body: ['Lora', 'serif'],
+                    },
+                },
+                fontSize: {
+                    'xs': ['0.75rem', { lineHeight: '1rem' }], 'sm': ['0.875rem', { lineHeight: '1.25rem' }], 'base': ['1rem', { lineHeight: '1.75rem' }], 'lg': ['1.125rem', { lineHeight: '1.75rem' }], 'xl': ['1.25rem', { lineHeight: '1.75rem' }], '2xl': ['1.5rem', { lineHeight: '2rem' }], '3xl': ['1.875rem', { lineHeight: '2.25rem' }], '4xl': ['2.25rem', { lineHeight: '2.5rem' }], '5xl': ['3rem', { lineHeight: '1.2' }], '6xl': ['3.75rem', { lineHeight: '1.2' }],
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-surface-50 font-body text-primary-800 antialiased">
+
+    <!-- Header -->
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8">
+            <div class="flex justify-between items-center transition-all duration-300 ease-in-out py-6" id="header-inner">
+                <!-- Logo -->
+                <a href="#" class="relative w-32 h-10">
+                    <span class="sr-only">BMR Homes</span>
+                    <!-- Light Logo SVG (inline) -->
+                    <svg id="logo-light" class="absolute h-full w-auto transition-opacity duration-300" viewBox="0 0 120 40" fill="var(--color-surface-50)" xmlns="http://www.w3.org/2000/svg"><path d="M0 0V40H8V0H0ZM16 0V40H24V0H16ZM34.2 0L26 20L34.2 40H44L35.8 20L44 0H34.2ZM56.3 20C56.3 31 51.3 40 42.3 40H34V0H42.3C51.3 0 56.3 9 56.3 20ZM42 8V32H42.3C47.3 32 48.3 25.1 48.3 20C48.3 14.9 47.3 8 42.3 8H42ZM70 0V32H84V40H62V0H70ZM92.1 0L84 20L92.1 40H101.9L93.8 20L101.9 0H92.1ZM120 0H112V40H120V32H112V24H120V16H112V8H120V0Z"/></svg>
+                    <!-- Dark Logo SVG (inline) -->
+                    <svg id="logo-dark" class="absolute h-full w-auto opacity-0 transition-opacity duration-300" viewBox="0 0 120 40" fill="var(--color-primary-900)" xmlns="http://www.w3.org/2000/svg"><path d="M0 0V40H8V0H0ZM16 0V40H24V0H16ZM34.2 0L26 20L34.2 40H44L35.8 20L44 0H34.2ZM56.3 20C56.3 31 51.3 40 42.3 40H34V0H42.3C51.3 0 56.3 9 56.3 20ZM42 8V32H42.3C47.3 32 48.3 25.1 48.3 20C48.3 14.9 47.3 8 42.3 8H42ZM70 0V32H84V40H62V0H70ZM92.1 0L84 20L92.1 40H101.9L93.8 20L101.9 0H92.1ZM120 0H112V40H120V32H112V24H120V16H112V8H120V0Z"/></svg>
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#services" class="header-link font-heading font-medium text-surface-50 hover:text-accent-400 transition-colors duration-300">Services</a>
+                    <a href="#projects" class="header-link font-heading font-medium text-surface-50 hover:text-accent-400 transition-colors duration-300">Projects</a>
+                    <a href="#about" class="header-link font-heading font-medium text-surface-50 hover:text-accent-400 transition-colors duration-300">About</a>
+                    <a href="#contact" class="inline-block bg-accent-500 text-surface-50 font-heading font-medium py-2.5 px-6 rounded-md hover:bg-accent-600 transition-all duration-300 ease-in-out active:scale-95 shadow-md hover:shadow-lg">Contact</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-trigger" class="md:hidden header-link text-surface-50" aria-label="Open menu">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-primary-900 z-50 flex flex-col justify-center items-center transform -translate-x-full transition-transform duration-500 ease-in-out" aria-hidden="true">
+        <button id="mobile-menu-close" class="absolute top-8 right-6 text-surface-50" aria-label="Close menu">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <nav class="flex flex-col space-y-8 text-center font-heading font-medium text-3xl">
+            <a href="#services" class="mobile-nav-link text-surface-50 hover:text-accent-400 transition-colors">Services</a>
+            <a href="#projects" class="mobile-nav-link text-surface-50 hover:text-accent-400 transition-colors">Projects</a>
+            <a href="#about" class="mobile-nav-link text-surface-50 hover:text-accent-400 transition-colors">About</a>
+            <a href="#contact" class="mobile-nav-link inline-block bg-accent-500 text-surface-50 text-2xl mt-4 py-3 px-8 rounded-md hover:bg-accent-600 transition-colors">Contact</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative h-screen flex items-center justify-center text-surface-50 overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img src="https://source.unsplash.com/1600x1200/?modern,architecture,exterior" alt="Aspirational BMR Home" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-primary-900 opacity-60"></div>
+            </div>
+            <div class="relative z-10 text-center max-w-4xl px-6 sm:px-8 animate-on-scroll fade-in-up is-visible">
+                <h1 class="font-heading font-bold text-5xl md:text-6xl mb-4 leading-tight">Crafting Spaces, Building Legacies.</h1>
+                <p class="font-body text-lg md:text-xl max-w-2xl mx-auto mb-8 opacity-90">Experience the BMR difference: Präzision, Leidenschaft, und eine unvergleichliche Qualität in jedem Detail.</p>
+                <a href="#contact" class="inline-block bg-accent-500 text-surface-50 font-medium font-heading py-3 px-8 rounded-md hover:bg-accent-600 transition-all duration-300 ease-in-out active:scale-95 shadow-lg hover:shadow-xl transform hover:-translate-y-1">Start Your Project</a>
+            </div>
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-surface-50 opacity-70 animate-bounce hidden md:block">
+                <span class="sr-only">Scroll Down</span>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+            </div>
+        </section>
+
+        <!-- Services / Feature Grid Section -->
+        <section id="services" class="py-24 lg:py-32 bg-surface-50">
+            <div class="max-w-7xl mx-auto px-6 sm:px-8">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="font-heading font-semibold text-4xl text-primary-900 mb-6 animate-on-scroll fade-in-up">Our Approach to Excellence</h2>
+                    <p class="font-body text-lg text-primary-700 mb-16 animate-on-scroll fade-in-up" style="--animation-delay: 150ms;">We build more than homes; we build trust. Our process is founded on three pillars of quiet confidence.</p>
+                </div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <div class="text-center animate-on-scroll fade-in-up" style="--animation-delay: 200ms;">
+                        <div class="inline-block p-4 rounded-lg bg-primary-100 text-primary-700 mb-6"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg></div>
+                        <h3 class="font-heading font-semibold text-xl text-primary-900 mb-3">Exceptional Design</h3>
+                        <p class="font-body text-base">We collaborate with visionary architects to create homes that are both breathtaking and deeply functional.</p>
+                    </div>
+                    <div class="text-center animate-on-scroll fade-in-up" style="--animation-delay: 350ms;">
+                        <div class="inline-block p-4 rounded-lg bg-primary-100 text-primary-700 mb-6"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg></div>
+                        <h3 class="font-heading font-semibold text-xl text-primary-900 mb-3">Meticulous Craftsmanship</h3>
+                        <p class="font-body text-base">Our skilled artisans uphold the highest standards, ensuring every detail is executed with unwavering Präzision.</p>
+                    </div>
+                    <div class="text-center animate-on-scroll fade-in-up" style="--animation-delay: 500ms;">
+                        <div class="inline-block p-4 rounded-lg bg-primary-100 text-primary-700 mb-6"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg></div>
+                        <h3 class="font-heading font-semibold text-xl text-primary-900 mb-3">Transparent Communication</h3>
+                        <p class="font-body text-base">We provide a smooth, clear process from initial consultation to the final handover, building trust every step.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects / Alternating Content Section -->
+        <section id="projects" class="py-24 lg:py-32 bg-surface-100">
+            <div class="max-w-7xl mx-auto px-6 sm:px-8 space-y-24 lg:space-y-32">
+                <div class="text-center max-w-3xl mx-auto">
+                     <h2 class="font-heading font-semibold text-4xl text-primary-900 mb-6 animate-on-scroll fade-in-up">Featured Projects</h2>
+                     <p class="font-body text-lg text-primary-700 animate-on-scroll fade-in-up" style="--animation-delay: 150ms;">Discover the tangible results of our commitment to quality and thoughtful design.</p>
+                </div>
+                <!-- Block 1: Image Left, Text Right -->
+                <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+                    <div class="animate-on-scroll fade-in-left">
+                        <img src="https://source.unsplash.com/800x600/?luxury,kitchen" alt="Luxurious kitchen design" class="w-full h-auto rounded-none shadow-md">
+                    </div>
+                    <div class="animate-on-scroll fade-in-right">
+                        <h3 class="font-heading font-semibold text-3xl text-primary-900 mb-4">The Aspen Grove Residence</h3>
+                        <p class="font-body text-lg mb-4">A showcase of modern elegance, this kitchen blends natural materials with state-of-the-art appliances to create a space that is both a culinary workshop and a family hub.</p>
+                        <a href="#" class="font-heading font-medium text-accent-500 hover:text-accent-700 transition-colors">View Project Details &rarr;</a>
+                    </div>
+                </div>
+                <!-- Block 2: Image Right, Text Left -->
+                <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+                    <div class="order-last md:order-first animate-on-scroll fade-in-left">
+                        <h3 class="font-heading font-semibold text-3xl text-primary-900 mb-4">The Serenity Ridge Estate</h3>
+                        <p class="font-body text-lg mb-4">Designed to capture panoramic views, this living space emphasizes natural light and open-plan living. Every element is curated to foster tranquility and connection with the outdoors.</p>
+                        <a href="#" class="font-heading font-medium text-accent-500 hover:text-accent-700 transition-colors">View Project Details &rarr;</a>
+                    </div>
+                    <div class="md:order-last animate-on-scroll fade-in-right">
+                        <img src="https://source.unsplash.com/800x600/?designer,living,room" alt="Spacious living room with natural light" class="w-full h-auto rounded-none shadow-md">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section id="about" class="py-24 lg:py-32 bg-primary-900 text-surface-50">
+            <div class="max-w-7xl mx-auto px-6 sm:px-8">
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 text-center">
+                    <div class="animate-on-scroll fade-in-up" data-stat-container>
+                        <p class="font-heading font-bold text-5xl text-accent-400 mb-2" data-stat-number="25">0</p>
+                        <p class="font-body text-xl font-medium text-surface-300">Years of Experience</p>
+                    </div>
+                    <div class="animate-on-scroll fade-in-up" style="--animation-delay: 150ms;" data-stat-container>
+                        <p class="font-heading font-bold text-5xl text-accent-400 mb-2" data-stat-number="150" data-stat-suffix="+">0+</p>
+                        <p class="font-body text-xl font-medium text-surface-300">Homes Delivered</p>
+                    </div>
+                    <div class="animate-on-scroll fade-in-up" style="--animation-delay: 300ms;" data-stat-container>
+                        <p class="font-heading font-bold text-5xl text-accent-400 mb-2" data-stat-number="98" data-stat-suffix="%">0%</p>
+                        <p class="font-body text-xl font-medium text-surface-300">Client Satisfaction</p>
+                    </div>
+                    <div class="animate-on-scroll fade-in-up" style="--animation-delay: 450ms;" data-stat-container>
+                        <p class="font-heading font-bold text-5xl text-accent-400 mb-2" data-stat-number="12">0</p>
+                        <p class="font-body text-xl font-medium text-surface-300">Industry Awards</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonial Section -->
+        <section class="py-24 lg:py-32 bg-surface-50">
+            <div class="max-w-4xl mx-auto px-6 sm:px-8 text-center animate-on-scroll fade-in-up">
+                <blockquote class="mb-8 relative pb-8 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-20 after:h-0.5 after:bg-primary-200">
+                    <p class="font-body text-3xl italic text-primary-700 leading-relaxed">
+                        "BMR Homes delivered beyond our wildest expectations. Their team's dedication to quality and their seamless process made building our dream home a truly enjoyable experience."
+                    </p>
+                </blockquote>
+                <p class="font-heading font-medium text-xl text-primary-900 mb-1">- Jane & John Doe</p>
+                <p class="font-body text-lg text-primary-500">Homeowners, Aspen Grove</p>
+            </div>
+        </section>
+
+        <!-- FAQ Accordion Section -->
+        <section class="py-24 lg:py-32 bg-surface-100">
+            <div class="max-w-3xl mx-auto px-6 sm:px-8">
+                <h2 class="font-heading font-bold text-4xl text-center text-primary-900 mb-12 animate-on-scroll fade-in-up">Frequently Asked Questions</h2>
+                <div class="space-y-4">
+                    <div class="border border-primary-200 rounded-lg overflow-hidden shadow-sm animate-on-scroll fade-in-up" style="--animation-delay: 100ms;">
+                        <button class="accordion-trigger flex justify-between items-center w-full p-6 text-left font-heading font-medium text-lg text-primary-800 focus:outline-none bg-surface-50 hover:bg-surface-200 transition duration-200 ease-in-out">
+                            <span>What is the typical timeline for a custom build?</span>
+                            <svg class="accordion-icon w-5 h-5 transform transition-transform duration-400 ease-in-out" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content p-6 pt-0 bg-surface-50">
+                            <p class="font-body text-base text-primary-700">The timeline for a custom home build varies based on complexity, size, and material selections. Generally, it ranges from 12 to 24 months, including design, permitting, and construction. We provide a detailed project schedule early in our process.</p>
+                        </div>
+                    </div>
+                    <div class="border border-primary-200 rounded-lg overflow-hidden shadow-sm animate-on-scroll fade-in-up" style="--animation-delay: 200ms;">
+                        <button class="accordion-trigger flex justify-between items-center w-full p-6 text-left font-heading font-medium text-lg text-primary-800 focus:outline-none bg-surface-50 hover:bg-surface-200 transition duration-200 ease-in-out">
+                            <span>Can BMR Homes assist with architectural design?</span>
+                            <svg class="accordion-icon w-5 h-5 transform transition-transform duration-400 ease-in-out" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content p-6 pt-0 bg-surface-50">
+                             <p class="font-body text-base text-primary-700">Absolutely. We have strong, long-standing relationships with acclaimed architectural firms. We can guide you through the design process, helping you select the right partner to bring your unique vision to life and ensuring the design aligns with your budget and our building expertise.</p>
+                        </div>
+                    </div>
+                     <div class="border border-primary-200 rounded-lg overflow-hidden shadow-sm animate-on-scroll fade-in-up" style="--animation-delay: 300ms;">
+                        <button class="accordion-trigger flex justify-between items-center w-full p-6 text-left font-heading font-medium text-lg text-primary-800 focus:outline-none bg-surface-50 hover:bg-surface-200 transition duration-200 ease-in-out">
+                            <span>How do you ensure budget and timeline adherence?</span>
+                            <svg class="accordion-icon w-5 h-5 transform transition-transform duration-400 ease-in-out" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content p-6 pt-0 bg-surface-50">
+                             <p class="font-body text-base text-primary-700">We utilize advanced project management software and maintain constant communication. A detailed budget is established upfront, and any changes are handled through a transparent change-order process. Regular site meetings and progress reports keep you fully informed and ensure the project stays on track.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Banner -->
+        <section id="contact" class="bg-accent-500 text-surface-50 py-20 lg:py-24 animate-on-scroll fade-in-up">
+            <div class="max-w-4xl mx-auto px-6 sm:px-8 text-center">
+                <h2 class="font-heading font-bold text-4xl mb-4">Ready to Build Your Dream Home?</h2>
+                <p class="font-body text-lg max-w-2xl mx-auto mb-8">Connect with BMR Homes today. Let's begin the journey towards unparalleled architectural excellence and a home crafted just for you.</p>
+                <a href="mailto:info@bmrhomes.com" class="inline-block bg-primary-700 text-surface-50 font-medium font-heading py-3 px-8 rounded-md hover:bg-primary-800 transition-all duration-300 ease-in-out active:scale-95 shadow-lg hover:shadow-xl transform hover:-translate-y-1">Request a Consultation</a>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-primary-900 text-surface-300 py-16 md:py-20 font-body">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+                <div class="md:col-span-5 lg:col-span-4">
+                     <a href="#" class="inline-block mb-6">
+                        <svg class="h-10 w-auto" viewBox="0 0 120 40" fill="var(--color-surface-50)" xmlns="http://www.w3.org/2000/svg"><path d="M0 0V40H8V0H0ZM16 0V40H24V0H16ZM34.2 0L26 20L34.2 40H44L35.8 20L44 0H34.2ZM56.3 20C56.3 31 51.3 40 42.3 40H34V0H42.3C51.3 0 56.3 9 56.3 20ZM42 8V32H42.3C47.3 32 48.3 25.1 48.3 20C48.3 14.9 47.3 8 42.3 8H42ZM70 0V32H84V40H62V0H70ZM92.1 0L84 20L92.1 40H101.9L93.8 20L101.9 0H92.1ZM120 0H112V40H120V32H112V24H120V16H112V8H120V0Z"/></svg>
+                    </a>
+                    <p class="text-surface-400 text-base max-w-sm">Crafting spaces that inspire, built with quiet confidence and timeless precision.</p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" aria-label="Facebook" class="text-surface-400 hover:text-accent-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg></a>
+                        <a href="#" aria-label="Instagram" class="text-surface-400 hover:text-accent-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.012 3.584-.07 4.85c-.148 3.227-1.667 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.012-3.584.07-4.85c.148-3.227 1.669-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.28-.059-1.688-.073-4.947-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44-.645-1.44-1.441-1.44z"/></svg></a>
+                        <a href="#" aria-label="LinkedIn" class="text-surface-400 hover:text-accent-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                    </div>
+                </div>
+                <div class="md:col-span-2 lg:col-span-2">
+                    <h4 class="font-heading font-semibold text-xl text-surface-50 mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#services" class="hover:text-accent-400 transition-colors">Services</a></li>
+                        <li><a href="#projects" class="hover:text-accent-400 transition-colors">Projects</a></li>
+                        <li><a href="#about" class="hover:text-accent-400 transition-colors">About</a></li>
+                        <li><a href="#" class="hover:text-accent-400 transition-colors">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-2 lg:col-span-2">
+                    <h4 class="font-heading font-semibold text-xl text-surface-50 mb-6">Resources</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="hover:text-accent-400 transition-colors">Our Process</a></li>
+                        <li><a href="#" class="hover:text-accent-400 transition-colors">Testimonials</a></li>
+                        <li><a href="#" class="hover:text-accent-400 transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-3 lg:col-span-4">
+                    <h4 class="font-heading font-semibold text-xl text-surface-50 mb-6">Connect With Us</h4>
+                     <p class="mb-4"><a href="mailto:info@bmrhomes.com" class="hover:text-accent-400 transition-colors">info@bmrhomes.com</a></p>
+                     <p class="mb-6"><a href="tel:+1-555-123-4567" class="hover:text-accent-400 transition-colors">+1 (555) 123-4567</a></p>
+                </div>
+            </div>
+            <div class="border-t border-primary-700 pt-8 mt-8 text-center text-sm text-surface-400">
+                <p>&copy; 2024 BMR Homes. All Rights Reserved. | <a href="#" class="hover:text-accent-400 transition-colors">Privacy Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- All Page Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // 1. Header Scroll Behavior
+            const header = document.getElementById('main-header');
+            const headerInner = document.getElementById('header-inner');
+            const headerLinks = document.querySelectorAll('.header-link');
+            const logoLight = document.getElementById('logo-light');
+            const logoDark = document.getElementById('logo-dark');
+            const scrollThreshold = 80;
+
+            const updateHeader = () => {
+                if (window.scrollY > scrollThreshold) {
+                    header.classList.add('bg-surface-50', 'shadow-md');
+                    headerInner.classList.remove('py-6');
+                    headerInner.classList.add('py-4');
+                    headerLinks.forEach(link => link.classList.replace('text-surface-50', 'text-primary-800'));
+                    logoLight.classList.add('opacity-0');
+                    logoDark.classList.remove('opacity-0');
+                } else {
+                    header.classList.remove('bg-surface-50', 'shadow-md');
+                    headerInner.add('py-6');
+                    headerInner.classList.remove('py-4');
+                    headerLinks.forEach(link => link.classList.replace('text-primary-800', 'text-surface-50'));
+                    logoLight.classList.remove('opacity-0');
+                    logoDark.classList.add('opacity-0');
+                }
+            };
+            window.addEventListener('scroll', updateHeader);
+            updateHeader();
+
+            // 2. Mobile Menu Toggle
+            const mobileMenuTrigger = document.getElementById('mobile-menu-trigger');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+            const openMenu = () => {
+                mobileMenu.classList.remove('-translate-x-full');
+                mobileMenu.setAttribute('aria-hidden', 'false');
+                document.body.classList.add('overflow-hidden');
+            };
+
+            const closeMenu = () => {
+                mobileMenu.classList.add('-translate-x-full');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+                document.body.classList.remove('overflow-hidden');
+            };
+
+            mobileMenuTrigger.addEventListener('click', openMenu);
+            mobileMenuClose.addEventListener('click', closeMenu);
+            mobileNavLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+
+            // 3. Scroll-Reveal Animations
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Add animation classes based on data attributes
+                        if (entry.target.classList.contains('fade-in-up')) entry.target.classList.add('is-visible');
+                        if (entry.target.classList.contains('fade-in-left')) entry.target.classList.add('is-visible');
+                        if (entry.target.classList.contains('fade-in-right')) entry.target.classList.add('is-visible');
+                        
+                        // Trigger stat counter if it's a stat element
+                        if (entry.target.hasAttribute('data-stat-container')) {
+                            const numberEl = entry.target.querySelector('[data-stat-number]');
+                            if (numberEl && !numberEl.dataset.animated) {
+                                animateCountUp(numberEl);
+                                numberEl.dataset.animated = 'true';
+                            }
+                        }
+
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            animatedElements.forEach(el => observer.observe(el));
+            
+            // 4. Stats Counter Animation
+            function animateCountUp(el) {
+                const target = parseInt(el.dataset.statNumber, 10);
+                const suffix = el.dataset.statSuffix || '';
+                let current = 0;
+                const duration = 2000;
+                const increment = target / (duration / 16); 
+
+                const updateCount = () => {
+                    current += increment;
+                    if (current < target) {
+                        el.textContent = Math.ceil(current) + suffix;
+                        requestAnimationFrame(updateCount);
+                    } else {
+                        el.textContent = target + suffix;
+                    }
+                };
+                requestAnimationFrame(updateCount);
+            }
+
+            // 5. FAQ Accordion
+            const accordionTriggers = document.querySelectorAll('.accordion-trigger');
+            accordionTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const content = trigger.nextElementSibling;
+                    const icon = trigger.querySelector('.accordion-icon');
+                    const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+
+                    trigger.setAttribute('aria-expanded', !isExpanded);
+                    icon.classList.toggle('rotate-180', !isExpanded);
+
+                    if (!isExpanded) {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        content.style.paddingTop = '1.5rem';
+                    } else {
+                        content.style.maxHeight = '0';
+                        content.style.paddingTop = '0';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
